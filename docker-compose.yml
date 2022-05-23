@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DB_POSTGRES_DB}
+      - PGDATA=/storage/db/data
+    volumes:
+      - ./storage/data/postgres:/storage/db/data
+      - ./storage/log:/storage/db/log
+    ports:
+      - "${DB_POSTGRES_EXT_PORT}:${DB_POSTGRES_INT_PORT}"
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "${REDIS_EXT_PORT}:${REDIS_INT_PORT}"

@@ -1,0 +1,14 @@
+.env
+.idea
+dist/
+nginx/log/*
+.DS_Store
+postgresql
+bin
+storage/certs/*
+storage/data/files/docs/*
+storage/data/files/photos/*
+storage/data/postgres/*
+storage/logs/*
+static/
+CHANGELOG.md
