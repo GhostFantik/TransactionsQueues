@@ -74,4 +74,9 @@ func main() {
 	if err := srv.Shutdown(context.Background()); err != nil {
 		log.Fatal().Stack().Err(err).Msg("ошибка остановки сервера")
 	}
+	db.Close()
+	err = rdb.Close()
+	if err != nil {
+		log.Fatal().Err(err).Stack().Msg("ошибка остановки подключения к Redis")
+	}
 }
